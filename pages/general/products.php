@@ -49,18 +49,18 @@
         <ul class="menu-items">
           <li class="m-t-30">
             <a href="women.php">
-                <span class="title">Women</span>
+                <span class="title">Women's Stuff</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-female"></i></span>
           </li>
             <li class="">
             <a href="men.php">
-                <span class="title">Men</span>
+                <span class="title">Men's Stuff</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-male"></i></span>
           </li>
           <li class="">
-            <a href="../general/journals.php"><span class="title">Others</span></a>
+            <a href="../user/others.php"><span class="title">Others</span></a>
             <span class="icon-thumbnail"><i class="pg-bag"></i></span>
           </li>
         </ul>
@@ -139,7 +139,7 @@
                     <a href="../general/profile.php"><i class="fa fa-user size-header"></i></a>
                 </span>
                 <span class="thumbnail-wrapper d32 inline m-t-5">
-                    <a href="../general/profile.php"><i class="fa fa-cart-plus size-header"></i></a>
+                    <a href="../general/cart.php"><i class="fa fa-cart-plus size-header"></i></a>
                 </span>
                 <span class="thumbnail-wrapper d32 inline m-t-5">
                     <a href="../general/logout.php"><i class="fa fa-sign-out size-header"></i></a>
@@ -157,9 +157,9 @@
           <!-- START CONTAINER FLUID -->
           <div class="container-fluid container-fixed-lg">
             <!-- BEGIN PlACE PAGE CONTENT HERE -->
-              <h1 class="text-center header-of-page">Book List</h1>
+              <h1 class="text-center header-of-page">Upload Product</h1>
               <div class="panel panel-transparent">
-              <form method="POST">
+              <!-- <form method="POST">
                   <div class="panel-heading">
                     <div class="form-group m-b-10 col-md-3">
                         <input type="text" name="search" placeholder="Search..." class="form-control">
@@ -300,7 +300,7 @@
                   </tbody>
                 </table>
               </div>
-            </div>
+            </div> -->
             <!-- END PANEL -->
             <!-- END PLACE PAGE CONTENT HERE -->
           </div>
@@ -312,8 +312,8 @@
         <div class="container-fluid container-fixed-lg footer">
           <div class="copyright sm-text-center">
             <p class="small no-margin pull-left sm-pull-reset">
-              <span class="hint-text">Copyright &copy; 2016 </span>
-              <span class="font-montserrat">Valentinancy & Vinieta</span>.
+              <span class="hint-text">Copyright &copy; 2018 </span>
+              <span class="font-montserrat">MININATO</span>.
               <span class="hint-text">All rights reserved. </span>
             </p>
             <div class="clearfix"></div>

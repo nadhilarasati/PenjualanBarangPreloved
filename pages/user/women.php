@@ -49,18 +49,18 @@
         <ul class="menu-items">
           <li class="m-t-30">
             <a href="women.php">
-                <span class="title">Women</span>
+                <span class="title">Women's Stuff</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-female"></i></span>
           </li>
             <li class="">
             <a href="men.php">
-                <span class="title">Men</span>
+                <span class="title">Men's Stuff</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-male"></i></span>
           </li>
           <li class="">
-            <a href="../general/journals.php"><span class="title">Others</span></a>
+            <a href="others.php"><span class="title">Others</span></a>
             <span class="icon-thumbnail"><i class="pg-bag"></i></span>
           </li>
         </ul>
@@ -139,7 +139,7 @@
                     <a href="../general/profile.php"><i class="fa fa-user size-header"></i></a>
                 </span>
                 <span class="thumbnail-wrapper d32 inline m-t-5">
-                    <a href="../general/profile.php"><i class="fa fa-cart-plus size-header"></i></a>
+                    <a href="../general/cart.php"><i class="fa fa-cart-plus size-header"></i></a>
                 </span>
                 <span class="thumbnail-wrapper d32 inline m-t-5">
                     <a href="../general/logout.php"><i class="fa fa-sign-out size-header"></i></a>
@@ -157,7 +157,7 @@
           <!-- START CONTAINER FLUID -->
           <div class="container-fluid container-fixed-lg">
             <!-- BEGIN PlACE PAGE CONTENT HERE -->
-              <h1 class="text-center header-of-page">Book List</h1>
+              <h1 class="text-center header-of-page">Product List</h1>
               <div class="panel panel-transparent">
               <form method="POST">
                   <div class="panel-heading">
@@ -179,9 +179,6 @@
                                               <span>Category</span>
                                           </li>
                                           <li data-option="" data-value="honeymoon" class="">
-                                              <span>Owner</span>
-                                          </li>
-                                          <li data-option="" data-value="honeymoon" class="">
                                               <span>Condition</span>
                                           </li>
                                       </ul>
@@ -189,7 +186,6 @@
                                   <select name="searchby" class="cs-select cs-skin-slide" data-init-plugin="cs-select">
                                     <option value="Judul">Name</option>
                                     <option value="Kategori">Category</option>
-                                    <option value="Pengarang">Owner</option>
                                     <option value="Penerbit">Condition</option>
                                   </select>
                                   <div class="cs-backdrop" style="transform: scale3d(1, 1, 1);">
@@ -206,7 +202,7 @@
                     <tr>
                       <th>Code</th>
                       <th>Name</th>
-                      <th>Owner</th>
+                      <th>Price</th>
                       <th>Photo</th>
                       <th>Condition</th>
                       <th>Category</th>
@@ -244,7 +240,7 @@
                                                     <p>" . $row['NamaBarang'] . "</p>
                                                 </td>
                                                 <td class='v-align-middle'>
-                                                    <p>" . $row['Pemilik'] . "</p>
+                                                    <p>" . $row['Harga'] . "</p>
                                                 </td>
                                                 <td class='v-align-middle'>
                                                     <p>" . $row['Foto'] . "</p>
@@ -274,7 +270,7 @@
                                                     <p>" . $row['NamaBarang'] . "</p>
                                                 </td>
                                                 <td class='v-align-middle'>
-                                                    <p>" . $row['Pemilik'] . "</p>
+                                                    <p>" . $row['Harga'] . "</p>
                                                 </td>
                                                 <td class='v-align-middle'>
                                                     <p>" . $row['Foto'] . "</p>
@@ -312,8 +308,8 @@
         <div class="container-fluid container-fixed-lg footer">
           <div class="copyright sm-text-center">
             <p class="small no-margin pull-left sm-pull-reset">
-              <span class="hint-text">Copyright &copy; 2016 </span>
-              <span class="font-montserrat">Valentinancy & Vinieta</span>.
+              <span class="hint-text">Copyright &copy; 2018 </span>
+              <span class="font-montserrat">MININATO</span>.
               <span class="hint-text">All rights reserved. </span>
             </p>
             <div class="clearfix"></div>

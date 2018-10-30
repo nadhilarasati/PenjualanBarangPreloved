@@ -15,9 +15,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta content="" name="description" />
     <meta content="" name="author" />
-    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
     <link href="../../style/assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" />
-    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+      <link href="../../style/style.css" rel="stylesheet" type="text/css" />
     <link href="../../style/assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="../../lib/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="../../style/assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
@@ -61,7 +60,7 @@
             <span class="icon-thumbnail"><i class="fa fa-male"></i></span>
           </li>
           <li class="">
-            <a href="../user/others.php"><span class="title">Others</span></a>
+            <a href="../general/journals.php"><span class="title">Others</span></a>
             <span class="icon-thumbnail"><i class="pg-bag"></i></span>
           </li>
         </ul>
@@ -76,7 +75,7 @@
       <!-- START HEADER -->
       <div class="header ">
         <!-- START MOBILE CONTROLS -->
-        <div class="container-fluid relative">
+        <div class="container-fluid rewomenve">
           <!-- LEFT SIDE -->
           <div class="pull-left full-height visible-sm visible-xs">
             <!-- START ACTION BAR -->
@@ -156,143 +155,152 @@
         <!-- START PAGE CONTENT -->
         <div class="content ">
           <!-- START CONTAINER FLUID -->
-          <div class="container-fluid container-fixed-lg text-center">
-
+          <div class="container-fluid container-fixed-lg">
             <!-- BEGIN PlACE PAGE CONTENT HERE -->
-              <?php
-                    //update profil orang
-                     if($_POST) {
-                      $username=$_SESSION['uname'];
-                      $password=$_POST['password'];
-                      $confpassword=$_POST['confpassword'];
-                      $alamat=$_POST['addr'];
-                      $notelp=$_POST['phone'];
-                      $conn = new mysqli("localhost","root","","elibrary");
-
-                      $sql = "UPDATE `anggota` SET Password='$password', Alamat='$alamat', No_telp='$notelp' WHERE Username='$username'";
-                      if($password==$confpassword) {
-                          if ($conn->query($sql) === TRUE) {
-                           echo "<span class='red-color'><b>PROFILE UPDATED</b></span>";
-                          }
-                            else {
-                           echo "Error updating record: " . $conn->error;
-                          }
-                      }
-                      else {
-                          echo "<span class='red-color'><b>your new password and confirmation password did not match</b></span>";
-                      }
-                     }
-                ?>
-              <h1 class="text-center header-of-page">Profile</h1>
-              <div class="update-profile">
-                <div class="card share text-center">
-                    <div class="card-content">
-                        <img alt="Quote" src="../../img/profile.jpg">
+              <h1 class="text-center header-of-page">Product List</h1>
+              <div class="panel panel-transparent">
+              <form method="POST">
+                  <div class="panel-heading">
+                    <div class="form-group m-b-10 col-md-3">
+                        <input type="text" name="search" placeholder="Search..." class="form-control">
                     </div>
-                    <div class="card-description text-center">
-                        <button class="btn btn-success btn-cons" data-target="#myModal" data-toggle="modal">Update User Info</button>
+                    <div class="col-md-1">
+                        <span class="panel-title by-search text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by</span>
                     </div>
-                </div>
-              </div>
-            <!-- END PLACE PAGE CONTENT HERE -->
-          </div>
-          <!-- END CONTAINER FLUID -->
-            <div class="modal fade stick-up" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content text-center">
-                <div class="modal-header clearfix text-center">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
-                  </button>
-                  <h3>Update User Info</h3>
+                    <div class="col-md-3">
+                          <div class="cs-wrapper">
+                              <div class="cs-select cs-skin-slide" tabindex="0">
+                                  <div class="cs-options" style="width: auto; overflow-y: hidden;">
+                                      <ul>
+                                          <li data-option="" data-value="sightseeing" class="cs-selected">
+                                              <span>Name</span>
+                                          </li>
+                                          <li data-option="" data-value="business" class="">
+                                              <span>Category</span>
+                                          </li>
+                                          <li data-option="" data-value="honeymoon" class="">
+                                              <span>Condition</span>
+                                          </li>
+                                      </ul>
+                                  </div>
+                                  <select name="searchby" class="cs-select cs-skin-slide" data-init-plugin="cs-select">
+                                    <option value="Judul">Name</option>
+                                    <option value="Kategori">Category</option>
+                                    <option value="Penerbit">Condition</option>
+                                  </select>
+                                  <div class="cs-backdrop" style="transform: scale3d(1, 1, 1);">
+                                  </div>
+                              </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <button class="btn btn-default btn-cons" type="submit">Search</button>
+                        </div>
+                    </div>
+                  </div>
+                </form>
+              <div class="panel-body">
+                <table class="table table-hover demo-table-dynamic" id="tableWithDynamicRows">
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Photo</th>
+                      <th>Condition</th>
+                      <th>Category</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                     <?php
-                        $conn = mysqli_connect("localhost","root","","elibrary");
-                        $query = "select nama from anggota where username = '".$_SESSION['uname']."'";
-                        $result = mysqli_query($conn,$query);
-                        if (! $result){
-                           throw new My_Db_Exception('Database error: ' . mysql_error());
-                        }
 
-                        while($row = $result->fetch_assoc()){
-                          echo "<p> Name: " . $row['nama'] . "</p>";
-                        }
-                    ?>
-                </div>
-                <div class="modal-body">
-                  <form role="form" method="POST">
-                    <div class="form-group-attached">
-                      <?php
+                     $user_name = "root";
+                     $password = "";
+                     $database = "elibrary";
+                     $server = "localhost";
+
+                     $db_handle = mysql_connect($server, $user_name, $password);
+                     $db_found = mysql_select_db($database, $db_handle);
+                        if($_POST) {
+                            $search = $_POST['search'];
+                            $searchby = $_POST['searchby'];
                             $db_handle = mysql_connect("localhost", "root", "");
                             $db_found = mysql_select_db("elibrary", $db_handle);
+
                             if ($db_found) {
-                                $username = $_SESSION['uname'];
-                                $SQL = "SELECT Password,No_telp,Alamat FROM anggota WHERE Username='$username'";
+
+                                $SQL =  "SELECT * FROM others JOIN kategori ON others.Id_Kategori=kategori.Id_Kategori WHERE ".$_POST['searchby']." LIKE '%".$_POST['search']."%'";
                                 $result = mysql_query($SQL);
-
+                                if (! $result){
+                                   throw new My_Db_Exception('Database error: ' . mysql_error());
+                                }
                                 while ( $row = mysql_fetch_assoc($result) ) {
-
-                                    echo "<div class='row'>
-                                        <div class='col-sm-12'>
-                                          <div class='form-group form-group-default'>
-                                            <label>Password</label>
-                                            <input type='password' id='pass' name='password' class='form-control form-control-update'>
-                                            <script>
-                                              var pass = document.getElementById('pass');
-                                              pass.value = ".$row['Password'].";
-                                            </script>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class='row'>
-                                        <div class='col-sm-12'>
-                                          <div class='form-group form-group-default'>
-                                            <label>Confirm Password</label>
-                                            <input type='password' name='confpassword' id='confpass' class='form-control form-control-update'>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class='row'>
-                                        <div class='col-sm-12'>
-                                          <div class='form-group form-group-default'>
-                                            <label>Phone Number</label>
-                                            <input type='text' name='phone' id='phone' class='form-control form-control-update'>
-                                            <script>
-                                              var phone = document.getElementById('phone');
-                                              phone.value = ".$row['No_telp'].";
-                                            </script>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class='row'>
-                                        <div class='col-sm-12'>
-                                          <div class='form-group form-group-default'>
-                                            <label>Address</label>
-                                            <input type='text' name='addr' id='addr' class='form-control form-control-update'>
-                                            <script>
-                                              var addr = document.getElementById('addr');
-                                              addr.value = ".$row['Alamat'].";
-                                            </script>
-                                          </div>
-                                        </div>
-                                      </div>";
-
+                                    echo "<tr>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Kode'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['NamaBarang'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Harga'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Foto'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Kondisi'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Kategori'] . "</p>
+                                                </td>
+                                            </tr>";
                                 }
                                 mysql_close($db_handle);
                                 }
-                        ?>
+                        }
+                        else {
+                            if ($db_found) {
+                              $SQL = "SELECT * FROM others JOIN kategori ON others.Id_Kategori=kategori.Id_Kategori";
+                              $result = mysql_query($SQL);
 
-                    </div>
-                      <div class="row">
-                    <div class="col-sm-4 m-t-10 sm-m-t-10 pull-right">
-                      <button type="submit" class="btn btn-primary btn-block m-t-5 text-center">Update</button>
-                    </div>
-                  </div>
-                  </form>
-                </div>
+                              while ( $row = mysql_fetch_assoc($result) ) {
+                                    echo "<tr>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Kode'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['NamaBarang'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Harga'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Foto'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Kondisi'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Kategori'] . "</p>
+                                                </td>
+                                            </tr>";
+
+                              }
+
+                              mysql_close($db_handle);
+
+                              }
+                            else {
+                                echo "tidak ada";
+                            }
+                        }
+                    ?>
+                  </tbody>
+                </table>
               </div>
-              <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
+            <!-- END PANEL -->
+            <!-- END PLACE PAGE CONTENT HERE -->
           </div>
+          <!-- END CONTAINER FLUID -->
         </div>
         <!-- END PAGE CONTENT -->
         <!-- START COPYRIGHT -->

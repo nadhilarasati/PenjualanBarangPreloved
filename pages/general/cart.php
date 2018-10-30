@@ -15,9 +15,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta content="" name="description" />
     <meta content="" name="author" />
-    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
     <link href="../../style/assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" />
-    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+      <link href="../../style/style.css" rel="stylesheet" type="text/css" />
     <link href="../../style/assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="../../lib/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="../../style/assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
@@ -26,9 +25,21 @@
     <link href="../../style/assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="../../style/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="../../style/pages/css/pages.css" rel="stylesheet" type="text/css" />
+    <!-- Favicon  -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="css/core-style.css">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
   </head>
+  
   <body class="fixed-header ">
-    <!-- BEGIN SIDEBPANEL-->
+     <!-- BEGIN SIDEBPANEL-->
     <nav class="page-sidebar" data-pages="sidebar">
         <?php
              session_start();
@@ -156,143 +167,115 @@
         <!-- START PAGE CONTENT -->
         <div class="content ">
           <!-- START CONTAINER FLUID -->
-          <div class="container-fluid container-fixed-lg text-center">
-
+          <div class="container-fluid container-fixed-lg">
             <!-- BEGIN PlACE PAGE CONTENT HERE -->
-              <?php
-                    //update profil orang
-                     if($_POST) {
-                      $username=$_SESSION['uname'];
-                      $password=$_POST['password'];
-                      $confpassword=$_POST['confpassword'];
-                      $alamat=$_POST['addr'];
-                      $notelp=$_POST['phone'];
-                      $conn = new mysqli("localhost","root","","elibrary");
+              <h1 class="text-center header-of-page">Your Cart</h1>
+              <div class="panel panel-transparent">
+              
+              <div class="cart-table-area section-padding-100">
+              <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-12 col-lg-8">
+                          <div class="cart-table clearfix">
+                              <table class="table table-responsive">
+                                  <thead>
+                                    <tr>
+                                      <th>Photo</th>
+                                      <th>Name</th>
+                                      <th>Price</th>
+                                      <th>Qty</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <?php
 
-                      $sql = "UPDATE `anggota` SET Password='$password', Alamat='$alamat', No_telp='$notelp' WHERE Username='$username'";
-                      if($password==$confpassword) {
-                          if ($conn->query($sql) === TRUE) {
-                           echo "<span class='red-color'><b>PROFILE UPDATED</b></span>";
-                          }
-                            else {
-                           echo "Error updating record: " . $conn->error;
-                          }
-                      }
-                      else {
-                          echo "<span class='red-color'><b>your new password and confirmation password did not match</b></span>";
-                      }
-                     }
-                ?>
-              <h1 class="text-center header-of-page">Profile</h1>
-              <div class="update-profile">
-                <div class="card share text-center">
-                    <div class="card-content">
-                        <img alt="Quote" src="../../img/profile.jpg">
-                    </div>
-                    <div class="card-description text-center">
-                        <button class="btn btn-success btn-cons" data-target="#myModal" data-toggle="modal">Update User Info</button>
-                    </div>
-                </div>
+                                    $user_name = "root";
+                                    $password = "";
+                                    $database = "elibrary";
+                                    $server = "localhost";
+
+                                    $db_handle = mysql_connect($server, $user_name, $password);
+                                    $db_found = mysql_select_db($database, $db_handle);
+                                        if($_POST) {
+                                            $search = $_POST['search'];
+                                            $searchby = $_POST['searchby'];
+                                            $db_handle = mysql_connect("localhost", "root", "");
+                                            $db_found = mysql_select_db("elibrary", $db_handle);
+
+                                            if ($db_found) {
+
+                                                $SQL =  "SELECT * FROM wanita JOIN kategori ON wanita.Id_Kategori=kategori.Id_Kategori WHERE ".$_POST['searchby']." LIKE '%".$_POST['search']."%'";
+                                                $result = mysql_query($SQL);
+                                                if (! $result){
+                                                  throw new My_Db_Exception('Database error: ' . mysql_error());
+                                                }
+                                                while ( $row = mysql_fetch_assoc($result) ) {
+                                                    echo "<tr>
+                                                                <td class='v-align-middle'>
+                                                                    <p>" . $row['Foto'] . "</p>
+                                                                </td>
+                                                                <td class='v-align-middle'>
+                                                                    <p>" . $row['NamaBarang'] . "</p>
+                                                                </td>
+                                                                <td class='v-align-middle'>
+                                                                    <p>" . $row['Harga'] . "</p>
+                                                                </td>
+                                                            </tr>";
+                                                }
+                                                mysql_close($db_handle);
+                                                }
+                                        }
+                                        else {
+                                            if ($db_found) {
+                                              $SQL = "SELECT * FROM wanita JOIN kategori ON wanita.Id_Kategori=kategori.Id_Kategori";
+                                              $result = mysql_query($SQL);
+
+                                              while ( $row = mysql_fetch_assoc($result) ) {
+                                                    echo "<tr>
+                                                              <td class='v-align-middle'>
+                                                                  <p>" . $row['Foto'] . "</p>
+                                                              </td>
+                                                              <td class='v-align-middle'>
+                                                                  <p>" . $row['NamaBarang'] . "</p>
+                                                              </td>
+                                                              <td class='v-align-middle'>
+                                                                  <p>" . $row['Harga'] . "</p>
+                                                              </td>
+                                                              <td class='v-align-middle'>
+                                                                  <p>1</p>
+                                                              </td>  
+                                                          </tr>";
+
+                                              }
+
+                                              mysql_close($db_handle);
+
+                                              }
+                                            else {
+                                                echo "tidak ada";
+                                            }
+                                        }
+                                    ?>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                      <div id="summary" class="col-12 col-sm-4 text-center" style="background-color:white;">
+                        <div class="cart-summary">
+                            <h5 style="padding:5px;">Cart Total</h5>
+                                <span>Subtotal:</span> <span>228000</span> <br>
+                                <span>Delivery Cost:</span> <span>-</span> <br>
+                                <span>Total:</span> <span>228000</span> <br>
+                            <div class="cart-btn mt-100" style="padding: 20px;">
+                                <a href="checkout.php" class="btn amado-btn w-100">Checkout</a>
+                            </div>
+                        </div>
+                      </div>
               </div>
+            </div>
             <!-- END PLACE PAGE CONTENT HERE -->
           </div>
           <!-- END CONTAINER FLUID -->
-            <div class="modal fade stick-up" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content text-center">
-                <div class="modal-header clearfix text-center">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
-                  </button>
-                  <h3>Update User Info</h3>
-                    <?php
-                        $conn = mysqli_connect("localhost","root","","elibrary");
-                        $query = "select nama from anggota where username = '".$_SESSION['uname']."'";
-                        $result = mysqli_query($conn,$query);
-                        if (! $result){
-                           throw new My_Db_Exception('Database error: ' . mysql_error());
-                        }
-
-                        while($row = $result->fetch_assoc()){
-                          echo "<p> Name: " . $row['nama'] . "</p>";
-                        }
-                    ?>
-                </div>
-                <div class="modal-body">
-                  <form role="form" method="POST">
-                    <div class="form-group-attached">
-                      <?php
-                            $db_handle = mysql_connect("localhost", "root", "");
-                            $db_found = mysql_select_db("elibrary", $db_handle);
-                            if ($db_found) {
-                                $username = $_SESSION['uname'];
-                                $SQL = "SELECT Password,No_telp,Alamat FROM anggota WHERE Username='$username'";
-                                $result = mysql_query($SQL);
-
-                                while ( $row = mysql_fetch_assoc($result) ) {
-
-                                    echo "<div class='row'>
-                                        <div class='col-sm-12'>
-                                          <div class='form-group form-group-default'>
-                                            <label>Password</label>
-                                            <input type='password' id='pass' name='password' class='form-control form-control-update'>
-                                            <script>
-                                              var pass = document.getElementById('pass');
-                                              pass.value = ".$row['Password'].";
-                                            </script>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class='row'>
-                                        <div class='col-sm-12'>
-                                          <div class='form-group form-group-default'>
-                                            <label>Confirm Password</label>
-                                            <input type='password' name='confpassword' id='confpass' class='form-control form-control-update'>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class='row'>
-                                        <div class='col-sm-12'>
-                                          <div class='form-group form-group-default'>
-                                            <label>Phone Number</label>
-                                            <input type='text' name='phone' id='phone' class='form-control form-control-update'>
-                                            <script>
-                                              var phone = document.getElementById('phone');
-                                              phone.value = ".$row['No_telp'].";
-                                            </script>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class='row'>
-                                        <div class='col-sm-12'>
-                                          <div class='form-group form-group-default'>
-                                            <label>Address</label>
-                                            <input type='text' name='addr' id='addr' class='form-control form-control-update'>
-                                            <script>
-                                              var addr = document.getElementById('addr');
-                                              addr.value = ".$row['Alamat'].";
-                                            </script>
-                                          </div>
-                                        </div>
-                                      </div>";
-
-                                }
-                                mysql_close($db_handle);
-                                }
-                        ?>
-
-                    </div>
-                      <div class="row">
-                    <div class="col-sm-4 m-t-10 sm-m-t-10 pull-right">
-                      <button type="submit" class="btn btn-primary btn-block m-t-5 text-center">Update</button>
-                    </div>
-                  </div>
-                  </form>
-                </div>
-              </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-          </div>
         </div>
         <!-- END PAGE CONTENT -->
         <!-- START COPYRIGHT -->

@@ -49,13 +49,13 @@
         <ul class="menu-items">
           <li class="m-t-30">
             <a href="women.php">
-                <span class="title">Women</span>
+                <span class="title">Women's Stuff</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-female"></i></span>
           </li>
             <li class="">
             <a href="men.php">
-                <span class="title">Men</span>
+                <span class="title">Men's Stuff</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-male"></i></span>
           </li>
@@ -139,7 +139,7 @@
                     <a href="../general/profile.php"><i class="fa fa-user size-header"></i></a>
                 </span>
                 <span class="thumbnail-wrapper d32 inline m-t-5">
-                    <a href="../general/profile.php"><i class="fa fa-cart-plus size-header"></i></a>
+                    <a href="../general/cart.php"><i class="fa fa-cart-plus size-header"></i></a>
                 </span>
                 <span class="thumbnail-wrapper d32 inline m-t-5">
                     <a href="../general/logout.php"><i class="fa fa-sign-out size-header"></i></a>
@@ -172,7 +172,7 @@
         <div class="container-fluid container-fixed-lg footer">
           <div class="copyright sm-text-center">
             <p class="small no-margin pull-left sm-pull-reset">
-              <span class="hint-text">Copyright &copy; 2016 </span>
+              <span class="hint-text">Copyright &copy; 2018 </span>
               <span class="font-montserrat">MININATO</span>.
               <span class="hint-text">All rights reserved. </span>
             </p>
