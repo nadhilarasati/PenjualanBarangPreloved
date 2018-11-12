@@ -210,28 +210,28 @@
                   </thead>
                   <tbody>
                     <?php
-                     
+
                      $user_name = "root";
                      $password = "";
                      $database = "elibrary";
                      $server = "localhost";
 
-                     $db_handle = mysql_connect($server, $user_name, $password);
-                     $db_found = mysql_select_db($database, $db_handle);
+                     $db_handle = MySQLi_connect($server, $user_name, $password, $database);
+                     $db_found = true;
                         if($_POST) {
                             $search = $_POST['search'];
                             $searchby = $_POST['searchby'];
-                            $db_handle = mysql_connect("localhost", "root", "");
-                            $db_found = mysql_select_db("elibrary", $db_handle);
+                            $db_handle = mysqli_connect("localhost", "root", "");
+                            $db_found = mysqli_select_db("elibrary", $db_handle);
 
-                            if ($db_found) {
+                            if ($db_found == true) {
 
                                 $SQL =  "SELECT * FROM pria JOIN kategori ON pria.Id_kategori=kategori.Id_Kategori WHERE ".$_POST['searchby']." LIKE '%".$_POST['search']."%'";
-                                $result = mysql_query($SQL);
+                                $result = MySQLi_query($SQL);
                                 if (! $result){
                                    throw new My_Db_Exception('Database error: ' . mysql_error());
                                 }
-                                while ( $row = mysql_fetch_assoc($result) ) {
+                                while ( $row = MySQLi_fetch_assoc($result) ) {
                                     echo "<tr>
                                                 <td class='v-align-middle'>
                                                     <p>" . $row['Kode'] . "</p>
@@ -253,15 +253,15 @@
                                                 </td>
                                             </tr>";
                                 }
-                                mysql_close($db_handle);
+                                MySQLi_close($db_handle);
                                 }
                         }
                         else {
-                            if ($db_found) {
+                            if ($db_found == true) {
                               $SQL = "SELECT * FROM pria JOIN kategori ON pria.Id_kategori=kategori.Id_Kategori";
-                              $result = mysql_query($SQL);
+                              $result = MySQLi_query($db_handle, $SQL);
 
-                              while ( $row = mysql_fetch_assoc($result) ) {
+                              while ( $row = MySQLi_fetch_assoc($result) ) {
                                     echo "<tr>
                                                 <td class='v-align-middle'>
                                                     <p>" . $row['Kode'] . "</p>
@@ -285,7 +285,7 @@
 
                               }
 
-                              mysql_close($db_handle);
+                              mysqli_close($db_handle);
 
                               }
                             else {
