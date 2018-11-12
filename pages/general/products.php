@@ -29,13 +29,13 @@
   <body class="fixed-header ">
     <!-- BEGIN SIDEBPANEL-->
     <nav class="page-sidebar" data-pages="sidebar">
-        <?php
+      <!-- BEGIN SIDEBAR MENU HEADER-->
+      <?php
              session_start();
              if(!$_SESSION['role']=='user') {
               header('location:../general/logout.php');
              }
         ?>
-      <!-- BEGIN SIDEBAR MENU HEADER-->
       <div class="sidebar-header">
           <span class="sidebar-title-header"><b>MININATO</b></span>
           <button type="button" class="btn btn-link visible-lg-inline" data-toggle-pin="sidebar"><i class="fa fs-12"></i>
@@ -60,7 +60,7 @@
             <span class="icon-thumbnail"><i class="fa fa-male"></i></span>
           </li>
           <li class="">
-            <a href="../user/others.php"><span class="title">Others</span></a>
+            <a href="../general/journals.php"><span class="title">Others</span></a>
             <span class="icon-thumbnail"><i class="pg-bag"></i></span>
           </li>
         </ul>
@@ -75,7 +75,7 @@
       <!-- START HEADER -->
       <div class="header ">
         <!-- START MOBILE CONTROLS -->
-        <div class="container-fluid rewomenve">
+        <div class="container-fluid relative">
           <!-- LEFT SIDE -->
           <div class="pull-left full-height visible-sm visible-xs">
             <!-- START ACTION BAR -->
@@ -110,7 +110,7 @@
             <div class="brand inline">
               <h4><b>MININATO</b></h4>
             </div>
-              <?php
+            <?php
                 // Create connection
                 $conn = mysqli_connect("localhost","root","","elibrary");
                 $query = "select nama from anggota where username = '".$_SESSION['uname']."'";
@@ -130,7 +130,7 @@
           <div class="visible-lg visible-md m-t-10">
             <div class="dropdown pull-right">
                 <span class="thumbnail-wrapper d32 inline m-t-5">
-                    <a href="../user/usr.php"><i class="pg-home size-header"></i></a>
+                    <a href="usr.php"><i class="pg-home size-header"></i></a>
                 </span>
                 <span class="thumbnail-wrapper d32 inline m-t-5">
                     <a href="../general/products.php"><img src="../../img/sell.png" width="25px" height="25px" class="size-header"></a>
@@ -150,6 +150,7 @@
         </div>
       </div>
       <!-- END HEADER -->
+      
       <!-- START PAGE CONTENT WRAPPER -->
       <div class="page-content-wrapper ">
         <!-- START PAGE CONTENT -->
@@ -157,151 +158,15 @@
           <!-- START CONTAINER FLUID -->
           <div class="container-fluid container-fixed-lg">
             <!-- BEGIN PlACE PAGE CONTENT HERE -->
-              <h1 class="text-center header-of-page">Upload Product</h1>
-              <div class="panel panel-transparent">
-              <!-- <form method="POST">
-                  <div class="panel-heading">
-                    <div class="form-group m-b-10 col-md-3">
-                        <input type="text" name="search" placeholder="Search..." class="form-control">
-                    </div>
-                    <div class="col-md-1">
-                        <span class="panel-title by-search text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by</span>
-                    </div>
-                    <div class="col-md-3">
-                          <div class="cs-wrapper">
-                              <div class="cs-select cs-skin-slide" tabindex="0">
-                                  <div class="cs-options" style="width: auto; overflow-y: hidden;">
-                                      <ul>
-                                          <li data-option="" data-value="sightseeing" class="cs-selected">
-                                              <span>Name</span>
-                                          </li>
-                                          <li data-option="" data-value="business" class="">
-                                              <span>Category</span>
-                                          </li>
-                                          <li data-option="" data-value="honeymoon" class="">
-                                              <span>Owner</span>
-                                          </li>
-                                          <li data-option="" data-value="honeymoon" class="">
-                                              <span>Condition</span>
-                                          </li>
-                                      </ul>
-                                  </div>
-                                  <select name="searchby" class="cs-select cs-skin-slide" data-init-plugin="cs-select">
-                                    <option value="Judul">Name</option>
-                                    <option value="Kategori">Category</option>
-                                    <option value="Pengarang">Owner</option>
-                                    <option value="Penerbit">Condition</option>
-                                  </select>
-                                  <div class="cs-backdrop" style="transform: scale3d(1, 1, 1);">
-                                  </div>
-                              </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              <button class="btn btn-default btn-cons" type="submit">Search</button>
-                        </div>
-                    </div>
-                  </div>
-                </form>
-              <div class="panel-body">
-                <table class="table table-hover demo-table-dynamic" id="tableWithDynamicRows">
-                  <thead>
-                    <tr>
-                      <th>Code</th>
-                      <th>Name</th>
-                      <th>Owner</th>
-                      <th>Photo</th>
-                      <th>Condition</th>
-                      <th>Category</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
+              
 
-                     $user_name = "root";
-                     $password = "";
-                     $database = "elibrary";
-                     $server = "localhost";
-
-                     $db_handle = mysql_connect($server, $user_name, $password);
-                     $db_found = mysql_select_db($database, $db_handle);
-                        if($_POST) {
-                            $search = $_POST['search'];
-                            $searchby = $_POST['searchby'];
-                            $db_handle = mysql_connect("localhost", "root", "");
-                            $db_found = mysql_select_db("elibrary", $db_handle);
-
-                            if ($db_found) {
-
-                                $SQL =  "SELECT * FROM pria JOIN kategori ON pria.Id_kategori=kategori.Id_Kategori WHERE ".$_POST['searchby']." LIKE '%".$_POST['search']."%'";
-                                $result = mysql_query($SQL);
-                                if (! $result){
-                                   throw new My_Db_Exception('Database error: ' . mysql_error());
-                                }
-                                while ( $row = mysql_fetch_assoc($result) ) {
-                                    echo "<tr>
-                                                <td class='v-align-middle'>
-                                                    <p>" . $row['Kode'] . "</p>
-                                                </td>
-                                                <td class='v-align-middle'>
-                                                    <p>" . $row['NamaBarang'] . "</p>
-                                                </td>
-                                                <td class='v-align-middle'>
-                                                    <p>" . $row['Pemilik'] . "</p>
-                                                </td>
-                                                <td class='v-align-middle'>
-                                                    <p>" . $row['<img src="data:image/jpeg;base64,'.base64_encode( $result['image'] ).'"/>'] . "</p>
-                                                </td>
-                                                <td class='v-align-middle'>
-                                                    <p>" . $row['Kondisi'] . "</p>
-                                                </td>
-                                                <td class='v-align-middle'>
-                                                    <p>" . $row['Kategori'] . "</p>
-                                                </td>
-                                            </tr>";
-                                }
-                                mysql_close($db_handle);
-                                }
-                        }
-                        else {
-                            if ($db_found) {
-                              $SQL = "SELECT * FROM pria JOIN kategori ON pria.Id_kategori=kategori.Id_Kategori";
-                              $result = mysql_query($SQL);
-
-                              while ( $row = mysql_fetch_assoc($result) ) {
-                                    echo "<tr>
-                                                <td class='v-align-middle'>
-                                                    <p>" . $row['Kode'] . "</p>
-                                                </td>
-                                                <td class='v-align-middle'>
-                                                    <p>" . $row['NamaBarang'] . "</p>
-                                                </td>
-                                                <td class='v-align-middle'>
-                                                    <p>" . $row['Pemilik'] . "</p>
-                                                </td>
-                                                <td class='v-align-middle'>
-                                                    <p>" . $row['Foto'] . "</p>
-                                                </td>
-                                                <td class='v-align-middle'>
-                                                    <p>" . $row['Kondisi'] . "</p>
-                                                </td>
-                                                <td class='v-align-middle'>
-                                                    <p>" . $row['Kategori'] . "</p>
-                                                </td>
-                                            </tr>";
-
-                              }
-
-                              mysql_close($db_handle);
-
-                              }
-                            else {
-                                echo "tidak ada";
-                            }
-                        }
-                    ?>
-                  </tbody>
-                </table>
-              </div>
-            </div> -->
-            <!-- END PANEL -->
+              <div class="product">
+							  <div class="product_image"><img src="img/flare-skirt.jpg" alt="flare-skirt"></div>
+							  <div class="product_extra product_new"><a href="">Flare Skirt</a></div>
+							  <div class="product_content">
+								<div class="product_price">Rp 20.000,00</div>
+							</div>
+						</div>
             <!-- END PLACE PAGE CONTENT HERE -->
           </div>
           <!-- END CONTAINER FLUID -->
@@ -350,3 +215,4 @@
     <!-- END PAGE LEVEL JS -->
   </body>
 </html>
+
