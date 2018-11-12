@@ -35,9 +35,9 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
   </head>
-  
+
   <body class="fixed-header ">
      <!-- BEGIN SIDEBPANEL-->
     <nav class="page-sidebar" data-pages="sidebar">
@@ -171,7 +171,7 @@
             <!-- BEGIN PlACE PAGE CONTENT HERE -->
               <h1 class="text-center header-of-page">Your Cart</h1>
               <div class="panel panel-transparent">
-              
+
               <div class="cart-table-area section-padding-100">
               <div class="container-fluid">
                   <div class="row">
@@ -243,7 +243,7 @@
                                                               </td>
                                                               <td class='v-align-middle'>
                                                                   <p>1</p>
-                                                              </td>  
+                                                              </td>
                                                           </tr>";
 
                                               }
@@ -267,7 +267,7 @@
                                 <span>Delivery Cost:</span> <span>-</span> <br>
                                 <span>Total:</span> <span>228000</span> <br>
                             <div class="cart-btn mt-100" style="padding: 20px;">
-                                <a href="checkout.php" class="btn amado-btn w-100">Checkout</a>
+                                <a href="checkout.php" class="btn btn-success btn-cons">Checkout</a>
                             </div>
                         </div>
                       </div>
