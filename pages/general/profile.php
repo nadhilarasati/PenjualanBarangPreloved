@@ -282,9 +282,9 @@
 
                     </div>
                       <div class="row">
-                    <div class="col-sm-4 m-t-10 sm-m-t-10 pull-right">
-                      <button type="submit" class="btn btn-primary btn-block m-t-5 text-center">Update</button>
-                    </div>
+                        <div class="cart-btn mt-100" style="padding: 20px;">
+                            <a href="checkout.php" class="btn btn-success btn-cons">Update Profile</a>
+                        </div>
                   </div>
                   </form>
                 </div>
