@@ -48,13 +48,13 @@
         <!-- BEGIN SIDEBAR MENU ITEMS-->
         <ul class="menu-items">
           <li class="m-t-30">
-            <a href="women.php">
+            <a href="../user/women.php">
                 <span class="title">Women's Stuff</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-female"></i></span>
           </li>
             <li class="">
-            <a href="men.php">
+            <a href="../user/men.php">
                 <span class="title">Men's Stuff</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-male"></i></span>
@@ -82,7 +82,7 @@
             <div class="header-inner">
               <a href="#" class="btn-link toggle-sidebar visible-sm-inline-block visible-xs-inline-block padding-5" data-toggle="sidebar">
                 <span class="icon-set menu-hambuger"></span>
-                
+
               </a>
             </div>
             <!-- END ACTION BAR -->
@@ -160,7 +160,7 @@
             <!-- BEGIN PlACE PAGE CONTENT HERE -->
             <h1 class="text-center header-of-page">Checkout</h1>
               <div class="panel panel-transparent">
-              
+
               <div class="cart-table-area section-padding-100">
               <div class="container-fluid">
                   <div class="row">
@@ -179,7 +179,7 @@
                             if (! $result){
                                 throw new My_Db_Exception('Database error: ' . mysql_error());
                             }
-            
+
                             while($row = $result->fetch_assoc()){
                               echo "<p> " . $row['alamat'] . "</p>";
                             }
@@ -220,7 +220,7 @@
 
                                                 while ( $row = mysql_fetch_assoc($result) ) {
 
-                                                    echo " 
+                                                    echo "
                                                       <div class='row'>
                                                         <div class='col-sm-12'>
                                                           <div class='form-group form-group-default'>
@@ -248,8 +248,8 @@
                                   </form>
                                 </div>
                               </div>
-                            
-                              
+
+
             <!-- /.modal-dialog -->
           </div>
         </div>
@@ -260,7 +260,7 @@
                                 <span>Subtotal:</span> <span>228000</span><br>
                                 <span>Delivery Cost:</span> <span>7000</span><br>
                                 <span>Total:</span> <span>231000</span>
-                                <div class="card-description text-center" style="padding-top:10px;">
+                                <div class="card-description" style="padding-top:10px;">
                                     <button class="btn btn-success btn-cons" data-target="#myModalPay" data-toggle="modal">Pay</button>
                                 </div>
                                 <div class="modal fade stick-up" id="myModalPay" tabindex="-1" role="dialog" aria-hidden="true">
@@ -270,56 +270,66 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
                                         </button>
                                         <h3>Payment</h3>
-                                          
+                                        <p class="text-center">Choose payment method</p>
                                       </div>
                                       <div class="modal-body">
                                         <form role="form" method="POST">
                                           <div class="form-group-attached">
-                                            <?php
-                                                  $db_handle = mysql_connect("localhost", "root", "");
-                                                  $db_found = mysql_select_db("elibrary", $db_handle);
-                                                  if ($db_found) {
-                                                      $username = $_SESSION['uname'];
-                                                      $SQL = "SELECT Alamat FROM anggota WHERE Username='$username'";
-                                                      $result = mysql_query($SQL);
-
-                                                      while ( $row = mysql_fetch_assoc($result) ) {
-
-                                                          echo " 
-                                                            <div class='row'>
-                                                              <div class='col-sm-12'>
-                                                                <div class='form-group form-group-default'>
-                                                                  <label>Address</label>
-                                                                  <input type='text' name='addr' id='addr' class='form-control form-control-update'>
-                                                                  <script>
-                                                                    var addr = document.getElementById('addr');
-                                                                    addr.value = ".$row['Alamat'].";
-                                                                  </script>
-                                                                </div>
-                                                              </div>
-                                                            </div>";
-
-                                                      }
-                                                      mysql_close($db_handle);
-                                                      }
-                                              ?>
-
+                                            <div class="cs-select cs-skin-slide" tabindex="0">
+                                                <div class="cs-options" style="width: auto; overflow-y: hidden;">
+                                                    <ul>
+                                                      <li data-option="" data-value="sightseeing" class="cs-selected">
+                                                          <span>Transfer BCA</span>
+                                                      </li>
+                                                      <li data-option="" data-value="business" class="">
+                                                          <span>Transfer OCBC NISP</span>
+                                                      </li>
+                                                      <li data-option="" data-value="honeymoon" class="">
+                                                          <span>Transfer BRI</span>
+                                                      </li>
+                                                      <li data-option="" data-value="honeymoon" class="">
+                                                          <span>COD</span>
+                                                      </li>
+                                                  </ul>
+                                              </div>
+                                              <select name="searchby" class="cs-select cs-skin-slide" data-init-plugin="cs-select">
+                                                <option value="Judul">Transfer BCA</option>
+                                                <option value="Kategori">Transfer OCBC NISP</option>
+                                                <option value="Penerbit">Transfer BRI</option>
+                                                <option value="Penerbit">COD</option>
+                                              </select>
+                                              <div class="cs-backdrop" style="padding-top:10px;">
+                                              </div>
                                           </div>
-                                            <div class="row">
-                                          <div class="col-sm-4 m-t-10 sm-m-t-10 pull-right">
-                                            <button type="submit" class="btn btn-primary btn-block m-t-5 text-center">Change Address</button>
+                                          </div>
+                                              <div class="cart-btn mt-100" style="padding: 20px;">
+                                                <button onclick="checkoutFunction()" class="btn btn-success btn-cons">Checkout</button>
+                                                <p id="demo" style="padding-top: 20px;"></p>
+                                                <p id="demo1"></p>
+                                                <p id="demo2"></p>
+                                                <p id="demo3"></p>
+                                                <script>
+                                                function checkoutFunction() {
+                                                    document.getElementById("demo").innerHTML = "Transfer to: MININATO";
+                                                    document.getElementById("demo1").innerHTML = "08910247151094";
+                                                    document.getElementById("demo2").innerHTML = "Total Payment: ";
+                                                    document.getElementById("demo3").innerHTML = "Please transfer according to total payment";
+                                                    button.style.display='none';
+                                                }
+                                                </script>
+                                              </div>
+
                                           </div>
                                         </div>
                                         </form>
                                       </div>
                                     </div>
-                                  
-                                    
+
                                   <!-- /.modal-dialog -->
                                 </div>
-                              </div>
-                              </div>
                     </div>
+                  </div>
+
                     <div class="col-12 col-lg-6 text-center" style="background-color:white; padding:10px; margin-top:20px;">
                             <h4 class="text-center">Shipping Method</h4>
                                 <p class="text-center" style="padding-bottom:10px;">Choose your shipping method</p>
@@ -349,7 +359,7 @@
                                   <div class="cs-backdrop" style="transform: scale3d(1, 1, 1); padding-top:10px;">
                                   </div>
                               </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            
+
                     </div>
               </div>
             </div>
