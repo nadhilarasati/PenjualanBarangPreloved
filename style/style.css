@@ -58,3 +58,24 @@ li {
 .red-color {
 	color: red;
 }
+
+.diskon {
+    display: block;
+	padding-bottom: 50px;
+	padding-top: 50px;
+    width: 50%;
+}
+
+.column {
+    float: left;
+	width: 33.33%;
+	padding-right:500px;
+	padding-left: 50px;
+}
+
+/* Clear floats after the columns */
+.row{
+    content: "";
+    display: table;
+    clear: both;
+}
