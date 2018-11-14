@@ -330,7 +330,8 @@
                             <p style="color:black;">Transfer to: MININATO (BRI 08910247151094)</p>
                           </div>
             </div>
-            
+            </div>
+            </div>
             </div>
             <div id="Unsent" class="tabcontentbuy">
               <div class="container-fluid container-fixed-lg" style="padding-top:80px;">
