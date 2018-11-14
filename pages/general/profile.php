@@ -36,7 +36,7 @@
         cursor: pointer;
         padding: 14px 26px;
         font-size: 17px;
-        width: 33.33%;
+        width: 50%;
       }
 
       .tablink:hover {
@@ -157,7 +157,7 @@
                     <a href="../user/usr.php"><i class="pg-home size-header"></i></a>
                 </span>
                 <span class="thumbnail-wrapper d32 inline m-t-5">
-                    <a href="../general/products.php"><img src="../../img/sell.png" width="25px" height="25px" class="size-header"></a>
+                    <a href="../general/notif.php"><i class="fa fa-bell size-header"></i></a>
                 </span>
                 <span class="thumbnail-wrapper d32 inline m-t-5">
                     <a href="../general/profile.php"><i class="fa fa-user size-header"></i></a>
@@ -182,8 +182,7 @@
         <div class="content" style="padding-top:30px;">
           <!-- START CONTAINER FLUID -->
             <button class="tablink" onclick="openPage('Profile', this, '#748194')" id="defaultOpen">Profile</button>
-            <button class="tablink" onclick="openPage('Buy', this, '#748194')">Buy</button>
-            <button class="tablink" onclick="openPage('Sell', this, '#748194')">Sell</button>
+            <button class="tablink" onclick="openPage('Buy', this, '#748194')">Product</button>
 
           <div id="Profile" class="container-fluid container-fixed-lg text-center tabcontent">
 
@@ -324,10 +323,7 @@
           </div>
         </div>
         <!-- END PAGE CONTENT -->
-        <div id="Buy" class="tabcontent">
-
-        </div>
-        <div id="Sell" class="tabcontent">
+        <div id="Product" class="tabcontent">
 
         </div>
         <!-- START COPYRIGHT -->
@@ -385,8 +381,7 @@
           document.getElementById(pageName).style.display = "block";
           elmnt.style.backgroundColor = color;
       }
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
+      document.getElementById("defaultOpen").click();
+    </script>
   </body>
 </html>
