@@ -195,7 +195,7 @@
                                     $server = "localhost";
 
                                     $db_handle = mysqli_connect($server, $user_name, $password, $database) ;
-                                    $db_found = mysqli_select_db($db_handle, $server);
+                                    $db_found = mysqli_select_db($db_handle, "elibrary");
                                         if($_POST) {
                                             $search = $_POST['search'];
                                             $searchby = $_POST['searchby'];
@@ -205,7 +205,7 @@
                                             if ($db_found) {
 
                                                 $SQL =  "SELECT * FROM wanita JOIN kategori ON wanita.Id_Kategori=kategori.Id_Kategori WHERE ".$_POST['searchby']." LIKE '%".$_POST['search']."%'";
-                                                $result = mysqli_query($SQL);
+                                                $result = mysqli_query($db_handle, $SQL);
                                                 if (! $result){
                                                   throw new My_Db_Exception('Database error: ' . mysql_error());
                                                 }
@@ -228,7 +228,7 @@
                                         else {
                                             if ($db_found) {
                                               $SQL = "SELECT * FROM wanita JOIN kategori ON wanita.Id_Kategori=kategori.Id_Kategori";
-                                              $result = MySQLi_query($SQL);
+                                              $result = MySQLi_query($db_handle, $SQL);
 
                                               while ( $row = mysqli_fetch_assoc($result) ) {
                                                     echo "<tr>
