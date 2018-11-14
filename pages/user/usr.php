@@ -158,12 +158,22 @@
           <div class="container-fluid container-fixed-lg">
             <!-- BEGIN PlACE PAGE CONTENT HERE -->
               <h1 class="text-center header-of-page">Welcome to MININATO!</h1>
-              <div class="content-item">
-                  <h4><b>About Us</b></h4>
-                  <p>MININATO is a site for you to sell and buy you preloved stuff. You were automatically registered as a member when you sign up. You can look for the preloved stuff you want. You also can sell your preloved stuff here. If you have any questions, please contact us by e-mail or just go to the Customer Care page (click the message icon) to give us some feedbacks.</p>
+              <div class="diskon">
+                <img src="../../img/discount1.jpg" alt="discount1" width="1300px">
+              </div>
+              
+              <div class="row">
+                <div class="column">
+                  <img src="../../img/bazaar.png" alt="bazaar" width="500px" height="500px" padding-bottom= "50px" >
+                </div>
+
+                <div class="column" >
+                  <img src="../../img/join.jpg" alt="join" width="695px" height="500px" padding-bottom= "50px">
+                </div>
               </div>
             <!-- END PLACE PAGE CONTENT HERE -->
           </div>
+          
           <!-- END CONTAINER FLUID -->
         </div>
         <!-- END PAGE CONTENT -->
