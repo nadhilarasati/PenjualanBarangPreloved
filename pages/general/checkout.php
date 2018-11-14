@@ -279,13 +279,13 @@
                                                 <div class="cs-options" style="width: auto; overflow-y: hidden;">
                                                     <ul>
                                                       <li data-option="" data-value="sightseeing" class="cs-selected">
-                                                          <span>Transfer BCA</span>
+                                                          <span>Transfer BRI</span>
                                                       </li>
                                                       <li data-option="" data-value="business" class="">
                                                           <span>Transfer OCBC NISP</span>
                                                       </li>
                                                       <li data-option="" data-value="honeymoon" class="">
-                                                          <span>Transfer BRI</span>
+                                                          <span>Transfer BCA</span>
                                                       </li>
                                                       <li data-option="" data-value="honeymoon" class="">
                                                           <span>COD</span>
@@ -293,31 +293,18 @@
                                                   </ul>
                                               </div>
                                               <select name="searchby" class="cs-select cs-skin-slide" data-init-plugin="cs-select">
-                                                <option value="Judul">Transfer BCA</option>
-                                                <option value="Kategori">Transfer OCBC NISP</option>
-                                                <option value="Penerbit">Transfer BRI</option>
-                                                <option value="Penerbit">COD</option>
+                                                <option value="bri">Transfer BRI</option>
+                                                <option value="ocbc">Transfer OCBC NISP</option>
+                                                <option value="bca">Transfer BCA</option>
+                                                <option value="cod">COD</option>
                                               </select>
-                                              <div class="cs-backdrop" style="padding-top:10px;">
-                                              </div>
                                           </div>
+                                            <p id="demo" style="padding-top: 20px;">Transfer to: MININATO</p>
+                                            <p id="demo1">BRI 08910247151094</p>
+                                            <p id="demo2">Total Payment: 231017</p>
+                                            <p id="demo3">Please transfer according to total payment</p>
+                                          <a href="profile.php" class="btn btn-success btn-cons">Pay</a>
                                           </div>
-                                              <div class="cart-btn mt-100" style="padding: 20px;">
-                                                <button onclick="checkoutFunction()" class="btn btn-success btn-cons">Checkout</button>
-                                                <p id="demo" style="padding-top: 20px;"></p>
-                                                <p id="demo1"></p>
-                                                <p id="demo2"></p>
-                                                <p id="demo3"></p>
-                                                <script>
-                                                function checkoutFunction() {
-                                                    document.getElementById("demo").innerHTML = "Transfer to: MININATO";
-                                                    document.getElementById("demo1").innerHTML = "08910247151094";
-                                                    document.getElementById("demo2").innerHTML = "Total Payment: ";
-                                                    document.getElementById("demo3").innerHTML = "Please transfer according to total payment";
-                                                    button.style.display='none';
-                                                }
-                                                </script>
-                                              </div>
 
                                           </div>
                                         </div>

@@ -26,6 +26,29 @@
     <link href="../../style/assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="../../style/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="../../style/pages/css/pages.css" rel="stylesheet" type="text/css" />
+    <style>
+    .tablink {
+        background-color: #2e353e;
+        color: white;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 26px;
+        font-size: 17px;
+        width: 33.33%;
+      }
+
+      .tablink:hover {
+        background-color: #777;
+      }
+      .tabcontent {
+          color: white;
+          display: none;
+          padding: 60px 20px;
+          height: 100%;
+      }
+    </style>
   </head>
   <body class="fixed-header ">
     <!-- BEGIN SIDEBPANEL-->
@@ -152,11 +175,17 @@
       </div>
       <!-- END HEADER -->
       <!-- START PAGE CONTENT WRAPPER -->
+
       <div class="page-content-wrapper ">
+
         <!-- START PAGE CONTENT -->
-        <div class="content ">
+        <div class="content" style="padding-top:30px;">
           <!-- START CONTAINER FLUID -->
-          <div class="container-fluid container-fixed-lg text-center">
+            <button class="tablink" onclick="openPage('Profile', this, '#748194')" id="defaultOpen">Profile</button>
+            <button class="tablink" onclick="openPage('Buy', this, '#748194')">Buy</button>
+            <button class="tablink" onclick="openPage('Sell', this, '#748194')">Sell</button>
+
+          <div id="Profile" class="container-fluid container-fixed-lg text-center tabcontent">
 
             <!-- BEGIN PlACE PAGE CONTENT HERE -->
               <?php
@@ -295,6 +324,12 @@
           </div>
         </div>
         <!-- END PAGE CONTENT -->
+        <div id="Buy" class="tabcontent">
+
+        </div>
+        <div id="Sell" class="tabcontent">
+
+        </div>
         <!-- START COPYRIGHT -->
         <!-- START CONTAINER FLUID -->
         <div class="container-fluid container-fixed-lg footer">
@@ -336,5 +371,22 @@
     <!-- BEGIN PAGE LEVEL JS -->
     <script src="../../style/assets/js/scripts.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL JS -->
+    <script>
+      function openPage(pageName,elmnt,color) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablink");
+          for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].style.backgroundColor = "";
+          }
+          document.getElementById(pageName).style.display = "block";
+          elmnt.style.backgroundColor = color;
+      }
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
   </body>
 </html>
