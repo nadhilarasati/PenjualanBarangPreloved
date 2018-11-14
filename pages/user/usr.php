@@ -133,7 +133,7 @@
                     <a href="usr.php"><i class="pg-home size-header"></i></a>
                 </span>
                 <span class="thumbnail-wrapper d32 inline m-t-5">
-                    <a href="../general/products.php"><img src="../../img/sell.png" width="25px" height="25px" class="size-header"></a>
+                    <a href="../general/notif.php"><i class="fa fa-bell size-header"></i></a>
                 </span>
                 <span class="thumbnail-wrapper d32 inline m-t-5">
                     <a href="../general/profile.php"><i class="fa fa-user size-header"></i></a>
