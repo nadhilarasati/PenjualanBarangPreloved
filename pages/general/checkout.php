@@ -172,10 +172,10 @@
                             $database = "elibrary";
                             $server = "localhost";
 
-                            $db_handle = mysql_connect($server, $user_name, $password);
-                            $db_found = mysql_select_db($database, $db_handle);
+                            $db_handle = mysqli_connect($server, $user_name, $password, $database);
+                            $db_found = mysqli_select_db($db_handle, $database);
                             $SQL = "select alamat from anggota where username = '".$_SESSION['uname']."'";
-                            $result = mysqli_query($conn,$SQL);
+                            $result = mysqli_query($db_handle, $SQL);
                             if (! $result){
                                 throw new My_Db_Exception('Database error: ' . mysql_error());
                             }
@@ -211,14 +211,14 @@
                                   <form role="form" method="POST">
                                     <div class="form-group-attached">
                                       <?php
-                                            $db_handle = mysql_connect("localhost", "root", "");
-                                            $db_found = mysql_select_db("elibrary", $db_handle);
+                                            $db_handle = mysqli_connect("localhost", "root", "", "elibrary");
+                                            $db_found = mysqli_select_db("elibrary", $db_handle);
                                             if ($db_found) {
                                                 $username = $_SESSION['uname'];
                                                 $SQL = "SELECT Alamat FROM anggota WHERE Username='$username'";
-                                                $result = mysql_query($SQL);
+                                                $result = mysqli_query($db_handle, $SQL);
 
-                                                while ( $row = mysql_fetch_assoc($result) ) {
+                                                while ( $row = mysqli_fetch_assoc($result) ) {
 
                                                     echo "
                                                       <div class='row'>
@@ -235,7 +235,7 @@
                                                       </div>";
 
                                                 }
-                                                mysql_close($db_handle);
+                                                mysqli_close($db_handle);
                                                 }
                                         ?>
 
