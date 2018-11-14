@@ -72,13 +72,13 @@
         <!-- BEGIN SIDEBAR MENU ITEMS-->
         <ul class="menu-items">
           <li class="m-t-30">
-            <a href="women.php">
+            <a href="../user/women.php">
                 <span class="title">Women's Stuff</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-female"></i></span>
           </li>
             <li class="">
-            <a href="men.php">
+            <a href="../user/men.php">
                 <span class="title">Men's Stuff</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-male"></i></span>

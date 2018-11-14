@@ -105,19 +105,19 @@
         <!-- BEGIN SIDEBAR MENU ITEMS-->
         <ul class="menu-items">
           <li class="m-t-30">
-            <a href="women.php">
+            <a href="../user/women.php">
                 <span class="title">Women's Stuff</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-female"></i></span>
           </li>
             <li class="">
-            <a href="men.php">
+            <a href="../user/men.php">
                 <span class="title">Men's Stuff</span>
             </a>
             <span class="icon-thumbnail"><i class="fa fa-male"></i></span>
           </li>
           <li class="">
-            <a href="../general/journals.php"><span class="title">Others</span></a>
+            <a href="../user/others.php"><span class="title">Others</span></a>
             <span class="icon-thumbnail"><i class="pg-bag"></i></span>
           </li>
         </ul>
@@ -167,7 +167,7 @@
             <div class="brand inline">
               <h4><b>MININATO</b></h4>
             </div>
-            <?php
+              <?php
                 // Create connection
                 $conn = mysqli_connect("localhost","root","","elibrary");
                 $query = "select nama from anggota where username = '".$_SESSION['uname']."'";
@@ -225,8 +225,112 @@
             <button class="tabbuy" onclick="openPageBuy('Cancel', this, 'white')">Cancel</button>
             <div id="NotYetPaid" class="tabcontentbuy">
               <div class="container-fluid container-fixed-lg" style="background-color:white;">
-                  <h3>HAHAHAHA</h3>
-              </div>
+              <div class="panel panel-transparent">
+              <h4>Your Order</h4>
+                            <div class="cart-table-area section-padding-100">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12 col-lg-8" style="color:black;">
+                                        <div class="cart-table clearfix">
+                                            <table class="table table-responsive text-center">
+                                                <thead>
+                                                  <tr>
+                                                    <th>Photo</th>
+                                                    <th>Name</th>
+                                                    <th>Price</th>
+                                                    <th>Qty</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <?php
+              
+                                                  $user_name = "root";
+                                                  $password = "";
+                                                  $database = "elibrary";
+                                                  $server = "localhost";
+              
+                                                  $db_handle = mysqli_connect($server, $user_name, $password, $database) ;
+                                                  $db_found = mysqli_select_db($db_handle, "elibrary");
+                                                      if($_POST) {
+                                                          $search = $_POST['search'];
+                                                          $searchby = $_POST['searchby'];
+                                                          $db_handle = mysqli_connect($server, $user_name, $password, $database) ;
+                                                          $db_found = mysqli_select_db($db_handle, $server);
+              
+                                                          if ($db_found) {
+              
+                                                              $SQL =  "SELECT * FROM wanita JOIN kategori ON wanita.Id_Kategori=kategori.Id_Kategori WHERE ".$_POST['searchby']." LIKE '%".$_POST['search']."%'";
+                                                              $result = mysqli_query($db_handle, $SQL);
+                                                              if (! $result){
+                                                                throw new My_Db_Exception('Database error: ' . mysql_error());
+                                                              }
+                                                              while ( $row = mysqli_fetch_assoc($result) ) {
+                                                                  echo "<tr>
+                                                                              <td class='v-align-middle'>
+                                                                                  <p>" . $row['Foto'] . "</p>
+                                                                              </td>
+                                                                              <td class='v-align-middle'>
+                                                                                  <p>" . $row['NamaBarang'] . "</p>
+                                                                              </td>
+                                                                              <td class='v-align-middle'>
+                                                                                  <p>" . $row['Harga'] . "</p>
+                                                                              </td>
+                                                                          </tr>";
+                                                              }
+                                                              mysqli_close($db_handle);
+                                                              }
+                                                      }
+                                                      else {
+                                                          if ($db_found) {
+                                                            $SQL = "SELECT * FROM wanita JOIN kategori ON wanita.Id_Kategori=kategori.Id_Kategori";
+                                                            $result = MySQLi_query($db_handle, $SQL);
+              
+                                                            while ( $row = mysqli_fetch_assoc($result) ) {
+                                                                  echo "<tr>
+                                                                            <td class='v-align-middle'>
+                                                                                <p>" . $row['Foto'] . "</p>
+                                                                            </td>
+                                                                            <td class='v-align-middle'>
+                                                                                <p>" . $row['NamaBarang'] . "</p>
+                                                                            </td>
+                                                                            <td class='v-align-middle'>
+                                                                                <p>" . $row['Harga'] . "</p>
+                                                                            </td>
+                                                                            <td class='v-align-middle'>
+                                                                                <p>1</p>
+                                                                            </td>
+                                                                        </tr>";
+              
+                                                            }
+              
+                                                            mysqli_close($db_handle);
+              
+                                                            }
+                                                          else {
+                                                              echo "tidak ada";
+                                                          }
+                                                      }
+                                                  ?>
+                                                </tbody>
+                                              </table>
+                                            </div>
+                                          </div>
+                                    <div id="summary" class="col-12 col-sm-4 text-center" style="background-color:white; color:black;">
+                                      <div class="cart-summary">
+                                          <h5 style="padding:5px;">Cart Total</h5>
+                                              <span>Subtotal:</span> <span>228000</span> <br>
+                                              <span>Delivery Cost:</span> <span>7000</span> <br>
+                                              <span>Total:</span> <span>231017</span> <br>
+                                          <div class="cart-btn mt-100" style="padding: 20px;">
+                                              <a href="" class="btn btn-success btn-cons">Upload Receipt</a>
+                                          </div>
+                                      </div>
+                                    </div>
+                            </div>
+                            <p style="color:black;">Transfer to: MININATO (BRI 08910247151094)</p>
+                          </div>
+            </div>
+            
             </div>
             <div id="Unsent" class="tabcontentbuy">
               <div class="container-fluid container-fixed-lg" style="padding-top:80px;">

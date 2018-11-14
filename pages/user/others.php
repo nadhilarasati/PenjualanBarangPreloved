@@ -60,7 +60,7 @@
             <span class="icon-thumbnail"><i class="fa fa-male"></i></span>
           </li>
           <li class="">
-            <a href="../general/journals.php"><span class="title">Others</span></a>
+            <a href="others.php"><span class="title">Others</span></a>
             <span class="icon-thumbnail"><i class="pg-bag"></i></span>
           </li>
         </ul>
@@ -133,7 +133,7 @@
                     <a href="../user/usr.php"><i class="pg-home size-header"></i></a>
                 </span>
                 <span class="thumbnail-wrapper d32 inline m-t-5">
-                    <a href="../general/products.php"><img src="../../img/sell.png" width="25px" height="25px" class="size-header"></a>
+                    <a href="../general/notif.php"><i class="fa fa-bell size-header"></i></a>
                 </span>
                 <span class="thumbnail-wrapper d32 inline m-t-5">
                     <a href="../general/profile.php"><i class="fa fa-user size-header"></i></a>
