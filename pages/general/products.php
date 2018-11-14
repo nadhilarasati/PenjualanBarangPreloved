@@ -160,13 +160,8 @@
             <!-- BEGIN PlACE PAGE CONTENT HERE -->
               
 
-              <div class="product">
-							  <div class="product_image"><img src="img/flare-skirt.jpg" alt="flare-skirt"></div>
-							  <div class="product_extra product_new"><a href="">Flare Skirt</a></div>
-							  <div class="product_content">
-								<div class="product_price">Rp 20.000,00</div>
-							</div>
-						</div>
+              
+						
             <!-- END PLACE PAGE CONTENT HERE -->
           </div>
           <!-- END CONTAINER FLUID -->
@@ -215,4 +210,3 @@
     <!-- END PAGE LEVEL JS -->
   </body>
 </html>
-
