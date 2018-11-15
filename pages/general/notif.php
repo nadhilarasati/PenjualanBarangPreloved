@@ -357,49 +357,49 @@
                 <p style="color:black;">There are no orders</p>
               </div>
             </div>
-
 				  </div>
+
           <div id="Sell" class="tabcontent">
-            <button class="tabsell" onclick="openPageSell('NotYetPaid', this, 'white')" id="defaultOpenSell">Not Yet Paid</button>
+            <button class="tabsell" onclick="openPageSell('NotYetPaidSell', this, 'white')" id="defaultOpenSell">Not Yet Paid</button>
             <button class="tabsell" onclick="openPageSell('NeedSent', this, 'white')">Need To Be Sent</button>
-            <button class="tabsell" onclick="openPageSell('Sent', this, 'white')">Sent</button>
-            <button class="tabsell" onclick="openPageSell('Finished', this, 'white')">Finished</button>
+            <button class="tabsell" onclick="openPageSell('SentSell', this, 'white')">Sent</button>
+            <button class="tabsell" onclick="openPageSell('FinishedSell', this, 'white')">Finished</button>
             <button class="tabsell" onclick="openPageSell('Canceled', this, 'white')">Canceled</button>
             <button class="tabsell" onclick="openPageSell('Returned', this, 'white')">Returned</button>
-            <div id="NotYetPaid" class="tabcontentsell">
-              <div class="container-fluid container-fixed-lg" style="padding-top:80px;">
+            <div id="NotYetPaidSell" class="tabcontentsell">
+              <div class="container-fluid container-fixed-lg" style="padding-top:80px; padding-left:40%;">
                 <img src="../../img/no-order.png" height="180px" width="250px">
-                <p style="color:black;">There are no orders</p>
+                <p style="color:black; padding-left:10%">There are no orders</p>
               </div>
             </div>
             <div id="NeedSent" class="tabcontentsell">
-              <div class="container-fluid container-fixed-lg" style="padding-top:80px;">
+            <div class="container-fluid container-fixed-lg" style="padding-top:80px; padding-left:40%;">
+              <img src="../../img/no-order.png" height="180px" width="250px">
+              <p style="color:black; padding-left:10%">There are no orders</p>
+            </div>
+            </div>
+            <div id="SentSell" class="tabcontentsell">
+              <div class="container-fluid container-fixed-lg" style="padding-top:80px; padding-left:40%;">
                 <img src="../../img/no-order.png" height="180px" width="250px">
-                <p style="color:black;">There are no orders</p>
+                <p style="color:black; padding-left:10%;">There are no orders</p>
               </div>
             </div>
-            <div id="Sent" class="tabcontentsell">
-              <div class="container-fluid container-fixed-lg" style="padding-top:80px;">
+            <div id="FinishedSell" class="tabcontentsell">
+              <div class="container-fluid container-fixed-lg" style="padding-top:80px; padding-left:40%;">
                 <img src="../../img/no-order.png" height="180px" width="250px">
-                <p style="color:black;">There are no orders</p>
-              </div>
-            </div>
-            <div id="Finished" class="tabcontentsell">
-              <div class="container-fluid container-fixed-lg" style="padding-top:80px;">
-                <img src="../../img/no-order.png" height="180px" width="250px">
-                <p style="color:black;">There are no orders</p>
+                <p style="color:black; padding-left:10%">There are no orders</p>
               </div>
             </div>
             <div id="Canceled" class="tabcontentsell">
-              <div class="container-fluid container-fixed-lg" style="padding-top:80px;">
+              <div class="container-fluid container-fixed-lg" style="padding-top:80px; padding-left:40%;">
                 <img src="../../img/no-order.png" height="180px" width="250px">
-                <p style="color:black;">There are no orders</p>
+                <p style="color:black; padding-left:10%;">There are no orders</p>
               </div>
             </div>
-            <div id="Returned" class="tabcontentsell">
-              <div class="container-fluid container-fixed-lg" style="padding-top:80px;">
+              <div id="Returned" class="tabcontentsell">
+              <div class="container-fluid container-fixed-lg" style="padding-top:80px; padding-left:40%;">
                 <img src="../../img/no-order.png" height="180px" width="250px">
-                <p style="color:black;">There are no orders</p>
+                <p style="color:black; padding-left:10%;">There are no orders</p>
               </div>
             </div>
           </div>

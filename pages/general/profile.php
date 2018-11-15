@@ -323,9 +323,14 @@
           </div>
         </div>
         <!-- END PAGE CONTENT -->
-        <div id="Product" class="tabcontent">
 
+        
+        <div id="Product" class="tabcontent">
+        <!--DISINI YA IM BIKINNYAAAA-->
         </div>
+
+
+        
         <!-- START COPYRIGHT -->
         <!-- START CONTAINER FLUID -->
         <div class="container-fluid container-fixed-lg footer">
