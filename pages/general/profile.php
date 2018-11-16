@@ -187,7 +187,143 @@
           <div id="Profile" class="container-fluid container-fixed-lg text-center tabcontent">
 
             <!-- BEGIN PlACE PAGE CONTENT HERE -->
-              
+              <?php
+                    //update profil orang
+                     if($_POST) {
+                      $username=$_SESSION['uname'];
+                      $password=$_POST['password'];
+                      $confpassword=$_POST['confpassword'];
+                      $alamat=$_POST['addr'];
+                      $notelp=$_POST['phone'];
+                      $conn = new mysqli("localhost","root","","elibrary");
+
+                      $sql = "UPDATE `anggota` SET Password='$password', Alamat='$alamat', No_telp='$notelp' WHERE Username='$username'";
+                      if($password==$confpassword) {
+                          if ($conn->query($sql) === TRUE) {
+                           echo "<span class='red-color'><b>PROFILE UPDATED</b></span>";
+                          }
+                            else {
+                           echo "Error updating record: " . $conn->error;
+                          }
+                      }
+                      else {
+                          echo "<span class='red-color'><b>your new password and confirmation password did not match</b></span>";
+                      }
+                     }
+                ?>
+              <h1 class="text-center header-of-page">Profile</h1>
+              <div class="update-profile">
+                <div class="card share text-center">
+                    <div class="card-content">
+                        <img alt="Quote" src="../../img/profile.jpg">
+                    </div>
+                    <div class="card-description text-center">
+                        <button class="btn btn-success btn-cons" data-target="#myModal" data-toggle="modal">Update User Info</button>
+                    </div>
+                </div>
+              </div>
+            <!-- END PLACE PAGE CONTENT HERE -->
+          </div>
+          <!-- END CONTAINER FLUID -->
+            <div class="modal fade stick-up" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content text-center">
+                <div class="modal-header clearfix text-center">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+                  </button>
+                  <h3>Update User Info</h3>
+                    <?php
+                        $conn = mysqli_connect("localhost","root","","elibrary");
+                        $query = "select nama from anggota where username = '".$_SESSION['uname']."'";
+                        $result = mysqli_query($conn,$query);
+                        if (! $result){
+                           throw new My_Db_Exception('Database error: ' . mysql_error());
+                        }
+
+                        while($row = $result->fetch_assoc()){
+                          echo "<p> Name: " . $row['nama'] . "</p>";
+                        }
+                    ?>
+                </div>
+                <div class="modal-body">
+                  <form role="form" method="POST">
+                    <div class="form-group-attached">
+                      <?php
+                            $db_handle = mysql_connect("localhost", "root", "");
+                            $db_found = mysql_select_db("elibrary", $db_handle);
+                            if ($db_found) {
+                                $username = $_SESSION['uname'];
+                                $SQL = "SELECT Password,No_telp,Alamat FROM anggota WHERE Username='$username'";
+                                $result = mysql_query($SQL);
+
+                                while ( $row = mysql_fetch_assoc($result) ) {
+
+                                    echo "<div class='row'>
+                                        <div class='col-sm-12'>
+                                          <div class='form-group form-group-default'>
+                                            <label>Password</label>
+                                            <input type='password' id='pass' name='password' class='form-control form-control-update'>
+                                            <script>
+                                              var pass = document.getElementById('pass');
+                                              pass.value = ".$row['Password'].";
+                                            </script>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class='row'>
+                                        <div class='col-sm-12'>
+                                          <div class='form-group form-group-default'>
+                                            <label>Confirm Password</label>
+                                            <input type='password' name='confpassword' id='confpass' class='form-control form-control-update'>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class='row'>
+                                        <div class='col-sm-12'>
+                                          <div class='form-group form-group-default'>
+                                            <label>Phone Number</label>
+                                            <input type='text' name='phone' id='phone' class='form-control form-control-update'>
+                                            <script>
+                                              var phone = document.getElementById('phone');
+                                              phone.value = ".$row['No_telp'].";
+                                            </script>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class='row'>
+                                        <div class='col-sm-12'>
+                                          <div class='form-group form-group-default'>
+                                            <label>Address</label>
+                                            <input type='text' name='addr' id='addr' class='form-control form-control-update'>
+                                            <script>
+                                              var addr = document.getElementById('addr');
+                                              addr.value = ".$row['Alamat'].";
+                                            </script>
+                                          </div>
+                                        </div>
+                                      </div>";
+
+                                }
+                                mysql_close($db_handle);
+                                }
+                        ?>
+
+                    </div>
+                      <div class="row">
+                        <div class="cart-btn mt-100" style="padding: 20px;">
+                            <a href="profile.php" class="btn btn-success btn-cons">Update Profile</a>
+                        </div>
+                  </div>
+                  </form>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+
         <div id="Product" class="container-fluid container-fixed-lg text-center tabcontent">
             <h1 class="text-center header-of-page">Product List</h1>
             <?php
