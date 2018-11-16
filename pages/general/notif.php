@@ -323,7 +323,6 @@
                                               <span>Total:</span> <span>231017</span> <br>
                                           <div class="cart-btn mt-100" style="padding: 20px;">
                                               <input type="file" id="upload-receipt" hidden="hidden"/>
-                                              <button class="btn btn-success btn-cons" id="upload-btn" style="margin:10px">Choose File</button>
                                               <button class="btn btn-success btn-cons" id="ok-btn">Upload</button>
                                               <script type="text/javascript">
                                                   const realBtn = document.getElementById("upload-receipt");
@@ -334,9 +333,6 @@
                                                     alert("sudah terupload :)");
                                                   });
 
-                                                  btn.addEventListener("click", function(){
-                                                    realBtn.click();
-                                                  });
                                               </script>
                                           </div>
                                       </div>
