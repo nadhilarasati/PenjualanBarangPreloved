@@ -212,7 +212,7 @@
                                     <div class="form-group-attached">
                                       <?php
                                             $db_handle = mysqli_connect("localhost", "root", "", "elibrary");
-                                            $db_found = mysqli_select_db("elibrary", $db_handle);
+                                            $db_found = mysqli_select_db($db_handle, "elibrary");
                                             if ($db_found) {
                                                 $username = $_SESSION['uname'];
                                                 $SQL = "SELECT Alamat FROM anggota WHERE Username='$username'";
