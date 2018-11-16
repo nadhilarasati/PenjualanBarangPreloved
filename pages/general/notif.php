@@ -243,12 +243,12 @@
                                                 </thead>
                                                 <tbody>
                                                   <?php
-              
+
                                                   $user_name = "root";
                                                   $password = "";
                                                   $database = "elibrary";
                                                   $server = "localhost";
-              
+
                                                   $db_handle = mysqli_connect($server, $user_name, $password, $database) ;
                                                   $db_found = mysqli_select_db($db_handle, "elibrary");
                                                       if($_POST) {
@@ -256,9 +256,9 @@
                                                           $searchby = $_POST['searchby'];
                                                           $db_handle = mysqli_connect($server, $user_name, $password, $database) ;
                                                           $db_found = mysqli_select_db($db_handle, $server);
-              
+
                                                           if ($db_found) {
-              
+
                                                               $SQL =  "SELECT * FROM wanita JOIN kategori ON wanita.Id_Kategori=kategori.Id_Kategori WHERE ".$_POST['searchby']." LIKE '%".$_POST['search']."%'";
                                                               $result = mysqli_query($db_handle, $SQL);
                                                               if (! $result){
@@ -284,7 +284,7 @@
                                                           if ($db_found) {
                                                             $SQL = "SELECT * FROM wanita JOIN kategori ON wanita.Id_Kategori=kategori.Id_Kategori";
                                                             $result = MySQLi_query($db_handle, $SQL);
-              
+
                                                             while ( $row = mysqli_fetch_assoc($result) ) {
                                                                   echo "<tr>
                                                                             <td class='v-align-middle'>
@@ -300,11 +300,11 @@
                                                                                 <p>1</p>
                                                                             </td>
                                                                         </tr>";
-              
+
                                                             }
-              
+
                                                             mysqli_close($db_handle);
-              
+
                                                             }
                                                           else {
                                                               echo "tidak ada";
@@ -322,7 +322,22 @@
                                               <span>Delivery Cost:</span> <span>7000</span> <br>
                                               <span>Total:</span> <span>231017</span> <br>
                                           <div class="cart-btn mt-100" style="padding: 20px;">
-                                              <a href="" class="btn btn-success btn-cons">Upload Receipt</a>
+                                              <input type="file" id="upload-receipt" hidden="hidden"/>
+                                              <button class="btn btn-success btn-cons" id="upload-btn" style="margin:10px">Choose File</button>
+                                              <button class="btn btn-success btn-cons" id="ok-btn">Upload</button>
+                                              <script type="text/javascript">
+                                                  const realBtn = document.getElementById("upload-receipt");
+                                                  const btn = document.getElementById("upload-btn");
+                                                  const ok = document.getElementById("ok-btn");
+
+                                                  ok.addEventListener("click", function(){
+                                                    alert("sudah terupload :)");
+                                                  });
+
+                                                  btn.addEventListener("click", function(){
+                                                    realBtn.click();
+                                                  });
+                                              </script>
                                           </div>
                                       </div>
                                     </div>
