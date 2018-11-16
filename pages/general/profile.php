@@ -182,7 +182,7 @@
         <div class="content" style="padding-top:30px;">
           <!-- START CONTAINER FLUID -->
             <button class="tablink" onclick="openPage('Profile', this, '#748194')" id="defaultOpen">Profile</button>
-            <button class="tablink" onclick="openPage('Buy', this, '#748194')">Product</button>
+            <button class="tablink" onclick="openPage('Product', this, '#748194')">Product</button>
 
           <div id="Profile" class="container-fluid container-fixed-lg text-center tabcontent">
 
@@ -311,7 +311,7 @@
                     </div>
                       <div class="row">
                         <div class="cart-btn mt-100" style="padding: 20px;">
-                            <a href="checkout.php" class="btn btn-success btn-cons">Update Profile</a>
+                            <a href="profile.php" class="btn btn-success btn-cons">Update Profile</a>
                         </div>
                   </div>
                   </form>
@@ -324,9 +324,246 @@
         </div>
         <!-- END PAGE CONTENT -->
 
-        
-        <div id="Product" class="tabcontent">
-        <!--DISINI YA IM BIKINNYAAAA-->
+        <div id="Product" class="container-fluid container-fixed-lg text-center tabcontent">
+            <h1 class="text-center header-of-page">Product List</h1>
+            <?php
+                    //update profil orang
+                     if($_POST) {
+                      $kode=$_SESSION['kode'];
+                      $namabarang=$_POST['namabarang'];
+                      $harga=$_POST['harga'];
+                      $foto=$_POST['foto'];
+                      $kondisi=$_POST['kondisi'];
+                      $conn = new mysqli("localhost","root","","elibrary");
+
+                      $sql = "INSERT INTO `others` (kode, namabarang, harga, foto, kondisi) VALUES ('$kode', '$namabarang', '$harga', '$foto', '$kondisi')";
+                      
+                          if ($conn->query($sql) === TRUE) {
+                           echo "<span class='red-color'><b>PRODUCT ADDED</b></span>";
+                          }
+                            else {
+                           echo "Error updating record: " . $conn->error;
+                          }
+                     }
+                ?>
+              
+                    <div class="card-description">
+                        <button class="btn btn-success" data-target="#myModalProduct" data-toggle="modal">Add Product</button>
+                    </div>
+                
+          <!-- END CONTAINER FLUID -->
+            <div class="modal fade stick-up" id="myModalProduct" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content text-center">
+                <div class="modal-header clearfix text-center">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+                  </button>
+                  <h3>Add Product</h3>
+                    <?php
+                        $conn = mysqli_connect("localhost","root","","elibrary");
+                        $query = "select nama from anggota where username = '".$_SESSION['uname']."'";
+                        $result = mysqli_query($conn,$query);
+                        if (! $result){
+                           throw new My_Db_Exception('Database error: ' . mysql_error());
+                        }
+
+                        while($row = $result->fetch_assoc()){
+                          echo "<p> Name: " . $row['nama'] . "</p>";
+                        }
+                    ?>
+                </div>
+                <div class="modal-body">
+                  <form role="form" method="POST">
+                    <div class="form-group-attached">
+                      <?php
+                            $db_handle = mysql_connect("localhost", "root", "");
+                            $db_found = mysql_select_db("elibrary", $db_handle);
+                            if ($db_found) {
+                                $username = $_SESSION['uname'];
+                                $SQL = "SELECT Kode,NamaBarang,Harga,Foto,Kondisi FROM others WHERE Username='$username'";
+                                $result = mysql_query($SQL);
+
+                                while ( $row = mysql_fetch_assoc($result) ) {
+
+                                    echo "<div class='row'>
+                                        <div class='col-sm-12'>
+                                          <div class='form-group form-group-default'>
+                                            <label>Code</label>
+                                            <input type='text' id='code' name='code' class='form-control form-control-update'>
+                                            <script>
+                                              var code = document.getElementById('code');
+                                              code.value = ".$row['Kode'].";
+                                            </script>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class='row'>
+                                        <div class='col-sm-12'>
+                                          <div class='form-group form-group-default'>
+                                            <label>Product Name</label>
+                                            <input type='text' name='nameproduct' id='nameproduct' class='form-control form-control-update'>
+                                            <script>
+                                              var nameproduct = document.getElementById('nameproduct');
+                                              nameproduct.value = ".$row['NamaBarang'].";
+                                            </script>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class='row'>
+                                        <div class='col-sm-12'>
+                                          <div class='form-group form-group-default'>
+                                            <label>Price</label>
+                                            <input type='text' name='price' id='price' class='form-control form-control-update'>
+                                            <script>
+                                              var price = document.getElementById('price');
+                                              price.value = ".$row['Harga'].";
+                                            </script>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class='row'>
+                                      <div class='col-sm-12'>
+                                        <div class='form-group form-group-default'>
+                                          <label>Product Name</label>
+                                          <input type='file' name='photo' id='photo' class='form-control form-control-update'>
+                                          <script>
+                                            var photo = document.getElementById('photo');
+                                            photo.value = ".$row['Foto'].";
+                                          </script>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class='row'>
+                                    <div class='col-sm-12'>
+                                      <div class='form-group form-group-default'>
+                                        <label>Condition</label>
+                                        <input type='text' name='condition' id='condition' class='form-control form-control-update'>
+                                        <script>
+                                          var condition = document.getElementById('condition');
+                                          condition.value = ".$row['Kondisi'].";
+                                        </script>
+                                      </div>
+                                    </div>
+                                  </div>";
+
+                                }
+                                mysql_close($db_handle);
+                                }
+                        ?>
+
+                    </div>
+                      <div class="row">
+                        <div class="cart-btn mt-100" style="padding: 20px;">
+                            <a href="profile.php" class="btn btn-success btn-cons">Add</a>
+                        </div>
+                  </div>
+                  </form>
+                </div>
+                </div>
+                </div>
+                </div>
+            <div class="panel panel-transparent">
+              <div class="panel-body">
+                <table class="table table-hover demo-table-dynamic" id="tableWithDynamicRows" style="color:black;">
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Photo</th>
+                      <th>Condition</th>
+                      <th>Category</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+
+                     $user_name = "root";
+                     $password = "";
+                     $database = "elibrary";
+                     $server = "localhost";
+
+                     $db_handle = MySQLi_connect($server, $user_name, $password, $database);
+                     $db_found = true;
+                        if($_POST) {
+                            $search = $_POST['search'];
+                            $searchby = $_POST['searchby'];
+                            $db_handle = mysqli_connect("localhost", "root", "");
+                            $db_found = mysqli_select_db("elibrary", $db_handle);
+
+                            if ($db_found == true) {
+
+                                $SQL =  "SELECT * FROM others JOIN kategori ON others.Id_kategori=kategori.Id_Kategori WHERE ".$_POST['searchby']." LIKE '%".$_POST['search']."%'";
+                                $result = MySQLi_query($SQL);
+                                if (! $result){
+                                   throw new My_Db_Exception('Database error: ' . mysql_error());
+                                }
+                                while ( $row = MySQLi_fetch_assoc($result) ) {
+                                    echo "<tr>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Kode'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['NamaBarang'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Harga'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <a><img src=" . $row['Foto'] . "></a>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Kondisi'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Kategori'] . "</p>
+                                                </td>
+                                            </tr>";
+                                }
+                                MySQLi_close($db_handle);
+                                }
+                        }
+                        else {
+                            if ($db_found == true) {
+                              $SQL = "SELECT * FROM pria JOIN kategori ON pria.Id_kategori=kategori.Id_Kategori";
+                              $result = MySQLi_query($db_handle, $SQL);
+
+                              while ( $row = MySQLi_fetch_assoc($result) ) {
+                                    echo "<tr>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Kode'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['NamaBarang'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Harga'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <a><img src=" . $row['Foto'] . "></a>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Kondisi'] . "</p>
+                                                </td>
+                                                <td class='v-align-middle'>
+                                                    <p>" . $row['Kategori'] . "</p>
+                                                </td>
+                                            </tr>";
+
+                              }
+
+                              mysqli_close($db_handle);
+
+                              }
+                            else {
+                                echo "tidak ada";
+                            }
+                        }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
         </div>
 
 
